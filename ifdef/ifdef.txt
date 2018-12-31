@@ -1,0 +1,37 @@
+Another pre-processor directive (along with #define and #include ) is the #ifdef . The #ifdef preprocessor directive tells the compiler to optionally compile some code depending on the state of a condition. This makes it possible to have some code appear only in a Debug version of the program. Consider the following code:
+/*****************************************
+* COMPUTE TAX
+* Compute the monthly tax
+*****************************************/
+float computeTax(float incomeMonthly)
+{
+    float incomeYearly = incomeMonthly * 12.0;
+    #ifdef DEBUG
+        cout << "incomeYearly == "
+        << incomeYearly << endl;
+    #endif // DEBUG
+    // the code between #ifdef and #endif
+    // only gets compiled if the
+    // DEBUG macro is defined
+    float taxYearly;
+    // tax code
+    ...
+    #ifdef DEBUG
+    cout << "taxYearly == "
+    << taxYearly << endl;
+    #endif // DEBUG
+    // observe how we format the output so we
+    // can tell which variable we are
+    // looking at in the output stream
+    return taxYearly / 12.0;
+}
+
+In this example, we have debug code displaying the values of key variables. Note that we don’t always want this code to execute; test bed will certainly complain about the unexpected output. Instead, we only want the ode to run when we are trying to fix a problem. The #ifdef mechanism allows this to occur. We can “turn on” the debug code with:
+    #define DEBUG 
+f this appears before the #ifdef s, then all the code will be included in the compilation and the cout s will work as one expects. This allows us to have two versions of the code in a single file: the ship version containing code only for the customer to see, and the debug version containing tons of extra code to validate everything.
+
+n #define can also be turned on at compilation time without ever touching the source code. We do this by telling the compiler we want the macro defined:
+    g++ -D<MacroName>
+For example, if you want to turn on the DEBUG macro without using #define DEBUG , this can be accomplished with:
+    g++ -DDEBUG file.cpp
+

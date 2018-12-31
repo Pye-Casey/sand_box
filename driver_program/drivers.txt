@@ -1,0 +1,35 @@
+Drivers are special programs designed to test a given function. This is an exceedingly important part of the programming process. An aerospace engineer would never put an untested engine in an airplane. He would instead mount the engine on a testing harness and run it through the paces. Only after exhaustive testing would he feel confident enough to put the engine in the airplane. We should also treat new functions with skepticism. When we validate functions before integrating them into the larger program, it is far easier to localize problems. After the function has been validated, then we can safely copy it to the project. Typically drivers consist of just the function main() and the function to be tested. Consider, for example, the prototype for the function computePay() :
+    float computePay(float hourlyWage, float hoursWorked);
+A driver program for computePay() might be:
+/**************************************
+* MAIN
+* Simple driver for computePay()
+**************************************/
+int main()
+{
+    float wage;
+    cout << "wage: "; // get the data as quickly as possible
+    cin >> wage;
+    float hours;
+    cout << "hours: ";  // again, just the simplest prompt
+    cin >> hours;
+    cout << "computePay("
+    << "hourlyWage = " << wage << ", " // show what was passed
+    << "hoursWorked = " << hours
+    << ") == "
+    << computePay(wage, hours) // show what was returned
+    << endl;
+
+    return 0;                                           
+}
+Observe how the driver program is just a bare-bones program whose only purpose is to prompt the user for the data to pass to the function and to display the results. When you use the driver-program development methodology, you:
+1. Start with a blank file. The only thing this program will do is test your function.
+2. Write the function. As long as the coupling is loose, this should not be too complex.
+3. Create a main() that only calls your function. This is typically done in three steps:
+a. First call your function with the simplest possible data.
+b. If your function requires any parameters, create simple cin statements in main() to fetch that
+data directly from the user.
+c. If your function returns something, display the results directly on the screen so it is easy to
+verify how the function responded to input.
+4. Test your function with a variety of input. Start with simple input and work to more complex
+scenarios.
