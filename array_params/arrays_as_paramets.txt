@@ -1,0 +1,16 @@
+The parameter declaration in the callee looks much like the declaration of an array. There is one exception however: there is no number inside the square brackets. The reason for this may seem a bit counter-intuitive at first: the callee does not know the size of the array. Consider the following example:
+/********************************************
+* DISPLAY NAME
+* Display a user’s name on the screen
+********************************************/
+void displayName(char lastName[], bool isMale) // no number inside the brackets!
+{
+    if (isMale)
+        cout << "Brother ";
+    else
+        cout << "Sister ";
+    cout << lastName; // treated like any other string
+    
+    return;
+}
+In this example, the first parameter ( lastName ) is a string. For the rest of the function, we can treat lastName like any local variable in the function.

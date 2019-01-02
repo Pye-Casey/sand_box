@@ -1,0 +1,11 @@
+Always pass the size of the array as a parameter. The least problematic way to do this is to let the compiler compute the number of elements. Consider the following code:
+
+    float listSmall[5];
+    cout << sizeof(listSmall) << endl;     // sizeof(float) * 5 == 20
+    cout << sizeof(listSmall[0]) << endl;     // sizeof(float) == 4
+    cout << sizeof(listSmall) / sizeof(listSmall[0]) << endl;     // 20 / 4 == 5 NumElements!
+
+Thus, it is very common to pass the size of a list using the following convention:
+    fillList(listSmall, sizeof(listSmall) / sizeof(listSmall[0]) );
+
+This expression is worth memorizing.

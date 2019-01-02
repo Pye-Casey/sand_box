@@ -1,0 +1,18 @@
+Sytax:
+    <Type> <variable>[size]
+Example:
+    int grades[200];
+
+Notes:
+Once size is specified it can't be changed.
+
+Examples:
+{
+    char grades[4] =
+    {
+        'A', 'C', 'B', 'A'
+    };
+}
+
+Array of Arrays
+    char listNames[10][256]; // ten strings

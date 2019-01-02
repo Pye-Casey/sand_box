@@ -1,0 +1,33 @@
+Passing arrays as parameters is much like passing strings with one major exception. While strings are frequently (but not always!) 256 characters in length, the size of array buffers are difficult to predict. For this reason, we almost always pass the size of an array along with the array itself:
+/*****************************************
+* FILL LIST
+* Fill a list with the user input
+****************************************/
+void fillList(float listGPAs[], int numGPAs)
+{
+    cout << "Please enter " << numGPAs << " GPAs\n";
+    for (int iGPAs = 0; iGPAs < numGPAs; iGPAs++)
+    {
+    cout << "\t#" << iGPAs + 1 << " : ";
+    cin >> listGPAs[iGPAs];
+    }
+}
+In this case, the function would not know the number of items in the list if the caller did not pass that value as a parameter.
+
+There are commonly three variables in the typical array loop: the array to be looped through, the number of items in the array, and the counter itself. Each of these is related yet each fulfill a different role. It is a good idea to choose variable names to emphasize the differences and similarities:
+    listGPA : The “ list ” prefix indicates it is an array, the “ GPA ” suffix indicates it pertains to GPAs.
+    numGPA : The “ num ” prefix indicates it is the number of items, the “ GPA ” suffix again indicates what list it pertains to.
+    iGPA : The “ i ” prefix indicates it is an incrementer (or iterator).
+Using consistent and predictable names makes it easier to spot bugs.
+
+Always pass the size of the array as a parameter. The least problematic way to do this is to let the compiler compute the number of elements. Consider the following code:
+    float listSmall[5];
+    cout << sizeof(listSmall) << endl;
+    // sizeof(float) * 5 == 20
+    cout << sizeof(listSmall[0]) << endl;
+    // sizeof(float) == 4
+    cout << sizeof(listSmall) / sizeof(listSmall[0]) << endl;
+    // 20 / 4 == 5 NumElements!
+Thus, it is very common to pass the size of a list using the following convention:
+    fillList(listSmall, sizeof(listSmall) / sizeof(listSmall[0]) );
+This expression is worth memorizing.

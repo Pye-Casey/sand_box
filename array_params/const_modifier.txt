@@ -1,0 +1,11 @@
+Recall that we should only be passing parameters by-reference when we want the callee to change the value. This gets a bit confusing because passing arrays as parameters is much like pass-by- reference. How can we avoid this unnecessarily tight coupling? The answer is to use the const modifier.
+
+The const modifier allows the programmer to say “This variable will never change.” When used in a parameter, it is a guarantee that the function will not alter the data in the variable. It would therefore be more correct to declare displayName() as follows:
+
+    void displayName(const char lastName[], bool isMale); // lastName can't be changed by function, but isMale can
+
+If the programmer made a mistake and actually tried to change the value in the function, the following
+compiler error message would be displayed:
+
+    example.cpp: In function “void displayName(const char*, bool)”:
+    example.cpp:15: error: assignment of read-only location “* lastName”
