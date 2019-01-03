@@ -1,0 +1,43 @@
+Comparing arrays using == only compares memory location of the two variables.
+
+Example:
+int list1[] = { 4, 8, 12 };
+int list2[] = { 3, 6, 9 };
+if (list1 == list2) // compares location only - not the contents!
+cout << "Same!";
+else
+cout << "Different!";
+
+We must loop through a string to compare them
+Example:
+{
+    char list1[] = "say something";
+    char list2[] = "say something";
+    
+    cout << "Lets compare the two strings:\n";
+    cout << "\tString 1:" << list1 << endl
+        << "\tString 2:" << list2 << endl;
+    // compare size (if not the same size it aint the same!)
+    int lh = sizeof(list1) / sizeof(list1[0]);
+    int rh = sizeof(list2) / sizeof(list2[0]);
+    bool success = true;
+    if ( lh == rh)
+    {
+        cout << "Both sides have the same memory size\n";
+        // check for letters
+        for (int i = 0; list1[i] != '\0'; i++ )
+        {
+            if (list1[i] != list2[i])
+            {
+                success = false;
+                break;
+            }
+        }
+        if (success)
+            cout << "The strings are the same!\n";
+        else    
+            cout << "The strings are not the same!\n";
+    }
+    else
+        cout << "They can't be the same, they are two different sizes.\n";
+}

@@ -1,0 +1,24 @@
+The binary search algorithm works much like searching for a hymn in the hymnal:
+1. Start in the middle ( iMiddle ) by opening the hymnal to the center of the book.
+2. If the hymn number is greater, then you can rule out the first half of the book. Thus the first possible page ( iFirst ) it could be on is the middle ( iMiddle ), the last is the end ( iLast ).
+3. If the hymn number is smaller then you can rule out the second half of the book. 
+4. Repeat steps 1-3. With each iteration, we either find the hymn or rule out half of the remaining pages. Thus iFirst and iLast get closer and closer together. If iFirst and iLast are the same, then our hymn is not present and we quit the search.
+
+Observe how the question “what needs to happen to each item in the list?” is answered with “decide if we should focus on the top half or bottom half of the list.”
+
+bool binarySearch(const int numbers[], int size, int search)
+{
+    int iFirst = 0;     // iFirst and iLast represent the range
+    int iLast = size – 1;     // of possible values: the whole list
+    while (iLast >= iFirst)     // as long as the range is not empty
+    {
+    int iMiddle = (iLast + iFirst) / 2; // find the center (step (1) above)
+    if (numbers[iMiddle] == search)
+        return true;
+    else if (numbers[iMiddle] > search)
+        iLast = iMiddle - 1;
+    else
+        iFirst = iMiddle + 1;     // if we found it, then stop
+    }
+    return false; // failure
+}

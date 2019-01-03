@@ -1,0 +1,14 @@
+Null-character
+The null-character ( '\0' ) is a special character used to designate the end of a c-string. We can assign the null-character to any char variable:
+{
+    char nullCharacter = '\0';  // single character assigned a null
+    char text[256];             // text is just an array of characters
+    text[0] = '\0';             // putting the null at the beginning signifies
+                                // an empty string
+    
+}
+The value of the null-character is 0 on the ASCII Table:
+    assert('\0' == 0);
+There is a special reason why the null-character was given the first slot on the ASCII table: it is the only character that equates to false when cast to a bool . In other words:
+    assert('\0' == false);
+Since zero is the only integer mapping to false , we can assume that the null-character is the only false character in the ASCII table.

@@ -1,0 +1,25 @@
+/*******************************************
+* DISPLAY NAMES
+* Display all the names in the passed list
+******************************************/
+void displayNames(char names[][256], int num) // second [] has the size in it
+{
+    for (int i = 0; i < num; i++)           // same as with other arrays
+        cout << names[i] << endl;           // access each individual string
+}
+
+******************************************
+* MAIN
+* Simple driver program for displayNames
+******************************************/
+int main()
+    {
+    char fullName[3][256] =
+    {
+        "Thomas",
+        "Edwin",
+        "Ricks"
+    };
+    displayNames(fullName, 3);
+    return 0;
+}
