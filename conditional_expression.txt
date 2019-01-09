@@ -1,0 +1,14 @@
+Conditional Expressions
+
+While an IF statement chooses between two statements, a conditional expression chooses between two expressions. For example, consider the following code inserting a person’s title before their last name according to their gender:
+    cout << "Hello "
+    << (isMale ? "Mr. " : "Mrs. ")
+    << lastName;
+Even though we have a single cout statement, we can embed the conditional expression right in the middle of the statement.
+
+There is exactly one ternary operator (operator with three operands) in the C++ language: the conditional expression:
+    <Boolean expression> ? <true expression> : <false expression>
+Like all operators, the result is an expression. In other words, the evaluation of the conditional expression is either the true-expression or the false-expression.
+
+Example:
+    number = (number < 0) ? –number : number;

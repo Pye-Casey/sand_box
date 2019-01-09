@@ -1,0 +1,22 @@
+Bitwise Operators
+
+Bitwise operators allow us to perform Boolean algebra not on Boolean variables but on individual bits. We have six bitwise operators:
+Op  Desc            Example
+~   Bitwise NOT     0101 == ~1010
+&   Bitwise AND     1000 == 1100 & 1010
+|   bitwise OR      1110 == 1100 | 1010
+^   Bitwise XOR     0110 == 1100 ^ 1010
+<<  Left shift      0110 == 0011 << 1
+>>  Right shift     0110 == 1100 >> 1
+
+One common use of bitwise operators is to collapse a collection of Boolean values into a single integer. If, for example, we have a variable called settings containing these values, then we can turn on bits in settings with the bitwise OR operator | . We can then determine if a setting is on with the bitwise AND operator & .
+
+Consider, for example, the following daily tasks Sue may need to do during her morning routine:
+    #define takeShower  0x01 // literal refers to a single bit
+    #define eatBreafast 0x02
+Observe how each value corresponds to turning on a single bit. We can next identify common tasks:
+    #define weekDayRoutine =    takeShower |    eatBreafast     |   // use bitwise OR to combine settings.
+                                getDressed  |   driveToSchool   |
+                                doHomework
+
+

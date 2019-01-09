@@ -1,0 +1,49 @@
+Allocating Memory
+
+There are three parts to this process:
+    NULL : The empty address indicating a pointer is invalid
+    new : The operator used to request memory from the operating system
+    delete : The operator used to tell the operating system the memory is no longer needed
+
+Null Pointer
+    An indication that a given pointer refers to no location in memory. We can check the validity of a pointer with a “ NULL -check:”
+        if (p == NULL) // could just use: if (p)
+        cout << "The pointer does not refer to a valid location in memory\n";
+    Definition of Null
+        Null is an address. A pointer to void. Numeric address is zero. 
+        Example:
+            int *pGrade = NULL; // we can assign NULL to any type of pointer
+
+Allocation with New
+    Syntax: <pointer variable> = new <data-type>;
+    Syntax with initialization: <pointer variable> = new <data-type> ( <initialization value> );
+    Example:
+        {        
+            double * p;     // p is a pointer to double
+            p = new double  // allocating a double returns a pointer to a double
+            char * c = new char('A'); // allocated a char and initialized it with letter 'A'
+        }
+    
+Memory Allocation Failure
+    Cant assume that memory allocation is succesfful. Need to detect condition and gracefully handle the error.
+    When 'new' request fails, resulting pointer is NULL. Every memory allocation should be accompanied by a NULL check (or handle exception); never assume an allocation succeeded.
+    {
+        int * p = new (nothrow) int;            // notice the nothrow parameter
+        if (p == NULL)                          // failure comes in the form of a
+        cout << "Memory allocation failure!\n"; // NULL pointer
+    }
+
+Freeing with Delete
+    Syntax: delete <pointer variable>;
+            delete [] <array pointer variable>;
+    Example:
+    {
+    int * p = new int;              // allocate 4 bytes 
+    char * text = new char[256];    // allocate 256 bytes
+    
+    delete p;                       // no []s to free a single slot in memory
+    p = NULL;                       // make sure we dont use freed memory after delete
+    delete [] text;                 // the []s indicate an array is freed.
+    text = NULL;                    // make sure we dont use freed memory after delete
+    
+    }

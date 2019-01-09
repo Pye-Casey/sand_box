@@ -1,0 +1,42 @@
+Pass By Pointer
+Pass-by-pointer is sending a copy of the address of the caller’s variable to the callee. With this pointer, the callee can then make a change that will be reflected in the caller’s data.
+
+Example:
+    void function(int val, int &reference, int * pointer)
+    {
+        cout << "Value:     " << val <<" &val:          " << &val << endl;
+        cout << "Reference: " << reference <<" &reference:      " << &reference << endl;
+        cout << "*Pointer:  " << *pointer <<" pointer:      " << pointer << endl;
+    }
+
+    int main()
+    {
+        int number;
+        cout << "Input number: ";
+        cin >> number;
+        cout << "Number: " << number
+            << "\t&number: " << &number << endl << endl;
+
+        function(number     /*by value*/,
+                    number  /*by reference*/,
+                    &number /*by pointer */);
+
+        return 0;
+    }
+    Example output:
+        Input number: 6
+        Number: 6	&number: 0x7ffd26c46724
+
+        Value:     6 &val:          0x7ffd26c4670c
+        Reference: 6 &reference:      0x7ffd26c46724
+        *Pointer:  6 pointer:      0x7ffd26c46724
+
+The final parameter is pass-by-pointer . A more accurate way of saying this is we are passing a pointer by value (in other words, making a copy of the address). Since the address is duplicated in the pointer variable, it follows that the value of *pointer should be the same as that of number .
+
+The only difference between pass-by-pointer and pass-by-reference is notational. With pass-by-pointer, we need to use the address-of operator ( & ) when passing the parameter and the dereference operator ( * ) when accessing the value. With pass-by-reference, we use the ampersand ( & ) in the callee’s parameter. Aside from these differences, they behave exactly the same. This is why the C programming language does not have pass-by-reference: it doesn’t need it!
+
+If we want to change a pointer parameter in a function (not what it points to), we have three
+options:
+   Return the value and have the caller make the assignment ( float * change(); )
+   Pass a pointer to a pointer. This is called a handle. ( void change(float ** handle); )
+   Pass the pointer by reference. ( void change(float * &pointer); )

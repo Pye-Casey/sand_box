@@ -1,0 +1,21 @@
+SWITCH Statement
+The SWITCH statement provides the ability to specify more than two possibilities in an elegant and efficient way.
+
+switch (percentage / 10)
+{
+    case 10:
+    case 9:
+        letterGrade = 'A';
+        break;
+    case 8:
+        letterGrade = 'B';
+        break;
+    case 7:
+        letterGrade = 'C';
+        break;
+    case 6:
+        letterGrade = 'D';
+        break;
+    default:
+        letterGrade = 'F';
+}

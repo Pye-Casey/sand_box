@@ -1,0 +1,78 @@
+Multi-Dimensional Arrays
+
+Declaring An Array:
+    Syntax:<Type> <name>[size][size]
+    C++ Syntax: <base-type> <variable>[<number of rows>][<number of columns>];
+    Ex: int data[200][15];
+
+Referencing An Array:
+    <name>[index][index]
+    Ex: cout << data[i][j];
+
+Passing as a Parameter:
+    (<Type> <name>[][size])
+    Ex: void func(int data[][15])
+
+Initialize Mult Array:
+{
+    int grid[4][3] =
+    {//     col 0   1   2
+        {       8, 12, -5}, // row 0
+        {     421,  4,153}, // row 1
+        {     -15, 20, 91}, // row 2
+        {       4,-15,182} // row 3
+    };
+}
+
+** Notice how the horizontal dimension comes second in multi-dimensional arrays. In Geometry, we learned to specify coordinates as (X, Y) where the horizontal dimension comes first. Multi-dimensional arrays are the opposite! Rather than trying to re-learn (Y, X) (which just doesn’t feel right, does it?), it is more convenient to use (Row, Column) as our array dimensions.
+
+Digital Image Example:
+{
+    char image[3][3000][4000]; // 3 pixel values,4000x3000 resolution
+    
+    // get file size
+    int size = sizeof(char) * sizeof(3) * sizeof(3000) * sizeof(4000); // results in 36,000,000 bytes!
+}
+
+My Example:
+void displayTable(const int array[][5])
+{
+    for (int row = 0; row < 4; row++)
+    {
+        for (int col = 0; col < 5; col++)
+        {
+            cout << array[row][col] << "\t" ;
+        }
+        cout << endl;
+    } 
+}
+
+int main()
+{
+    
+    int array[4][5] = 
+    {
+        { 1, 2, 3, 4, 5}, // row 0
+        { 6, 7, 8, 9, 10}, // row 1
+        { 11, 12, 13, 14, 15}, // row 2
+        { 16, 17, 18, 19, 20} // row 3
+    };
+
+    //Display table
+    cout << "Displaying table:\n";
+    for (int iRow = 0; iRow < 4; iRow++)
+    {
+        for (int iCol = 0; iCol < 5; iCol++)
+        {
+            cout << array[iRow][iCol] << "\t" ;
+        }
+        cout << endl;
+    }
+    cout << endl;
+    // display table using function
+    cout << "Displaying table using function:\n";
+    displayTable(array);     
+
+    return 0;
+}
+

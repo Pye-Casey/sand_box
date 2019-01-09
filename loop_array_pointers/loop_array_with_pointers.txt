@@ -1,0 +1,28 @@
+Looping through array with pointers
+Arrays are collections of data guaranteed
+to reside in contiguous blocks of memory. From these two observations it should be clear that, given some array[i] , the location array[i + 1] should be in the adjacent location in memory. Pointer arithmetic is the process of levering this proximity to access array data.
+Example:
+    {
+        char text[] = "CS"; // some buffer in memory
+        char * pC = text; // text refers to the first item, so pC does as well
+        char * pS = text + 1; // the next location in memory is one item beyond the first   
+    }
+
+Arrays are simply pointers. This gives us two different notations for working with arrays:
+the square bracket notation and the star notation. Consider the following array:
+int array[] =
+{
+    7, 4, 2, 9, 3, 1, 8, 2, 9, 1, 2
+};
+Consider the first element in an array. We can access this item two ways:
+    cout << "array[0] == " << array[0] << endl;
+    cout << "*array == " << *array << endl;
+    assert(array[0] == *array);
+The first output line will of course display the value 7 . We learned this from Chapter 3.0. The second will dereference the array pointer, yielding the value it points to. Since pointers to arrays always point to the first item, this too will give us the value 7 . In other words, there is no difference between *array and array[0] ; they are the same thing!
+
+Similarly, consider the 6 th item in the list. We can access with:
+    cout << "array[5] == " << array[5] << endl;
+    cout << "*(array + 5) == " << *(array + 5) << endl;
+    assert(array[5] == *(array + 5));
+This is somewhat more complicated. We know the 6 th item in the list can be accessed with array[5]
+(remembering that we start counting with zero instead of one). The next statement (with *(array + 5) instead of array[5] ) may be counterintuitive. Since we can point to the 6 th item on the list by adding five to the base pointer ( array + 5 ), then by dereferencing the resulting pointer we get the data

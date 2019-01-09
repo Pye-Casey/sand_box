@@ -1,0 +1,41 @@
+Arrays are pass-by-pointer
+
+As you may recall, arrays are pointers. Specifically, the array variable points to the first item in the range of memory locations. It thus follows that passing an array as a parameter should be pass-by-pointer. In fact, it is. This is why we said in Chapter 3.0 that passing an array is like pass-by-reference. The reason is that it is actually pass-by-pointer. Consider the following example:
+/***************************
+* INITIALIZE ARRAY
+* Set the values of an array
+* to zero
+****************************/
+void initializeArray(int * array, int size)
+{
+    for (int i = 0; i < size; i++)
+    array[i] = 0;
+}
+    // we could say int array[] instead, it
+    // means basically the same thing
+    // standard array loop
+    // use the [] notation even though we
+    // declared it as a pointer
+/***************************
+* MAIN
+* Simple driver program
+***************************/
+int main()
+{
+    const int SIZE = 10; // const variables are ALL_CAPS
+    
+    int list[SIZE]; // can be declared as a CONST
+    
+    assert(SIZE == sizeof(list) / sizeof(*list));// *list is the same as list[0]
+    
+    initializeArray(list, SIZE);
+    // call the function the normal way
+    // call it with a pointer
+    int *pList = list;
+    initializeArray(pList, SIZE);
+    // list is a pointer so this is OK
+    // exactly the same as the first time
+    // we called initializeArray
+    return 0;
+}
+The square bracket [] notation (as opposed to the pointer * notation) is convenient because we can forget we are working with pointers. However, they are just a notational convenience. We can remove them and work with pointers to get a more clear indication of what is going on.

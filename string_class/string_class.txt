@@ -1,0 +1,40 @@
+String Class
+
+#include <string>
+
+{
+    string lastName;
+    lastName = "Pye";
+    string fullName = "Mr. " + lastName;
+    cout << "Hello " << fullName << endl;
+}
+
+Declaring a string
+With a c-string and all other built-in data-types in C++, variables are not initialized when they are declared. This is not true with the String Class. The act of declaring a string variable also initializes it to the empty string.
+
+Check capacity
+{
+    string textEmpty;
+    string textFull = "Introduction to Software Development";
+    cout << textEmpty.capacity() << endl;
+    cout << textFull.capacity() << endl;
+}
+
+Get an Entire Line of Text
+    {
+        string text2; // no buffer needed here
+        getline(cin, text2); // note how cin is the parameter!
+    }c
+
+My Example:
+{
+    string str = "This is my string";
+    string str2 = str + "... it is a special string"; // concatenate with +
+    cout << str2 << endl;
+
+    cout << "What is your full name? ";
+    string fullName;
+    getline(cin,fullName); // use this function for strings
+
+    cout << "Welcome, " + fullName << endl;
+}
